@@ -7,6 +7,9 @@ load_dotenv('./.env')
 
 
 parser = argparse.ArgumentParser(description='Popule the message fields to send to an ServiceBus TOPIC in Azure')
+
+parser.add_argument('-N','--notificationtype', type=str, required=True,
+                   help='Set the Hostname')
 parser.add_argument('-H','--hostname', type=str, required=True,
                    help='Set the Hostname')
 parser.add_argument('-S','--service', type=str, required=True,
@@ -27,6 +30,7 @@ sbs = ServiceBusService(os.getenv('SERVICE_NAMESPACE'),
                         shared_access_key_value=os.getenv('KEY_VALUE'))
 
 msg = Message(body="SQLGENERIC CRITICAL - 1", custom_properties={
+    'notificationtype':args.notificationtype,
     'hostname':args.hostname,
     'service':args.service,
     'address':args.address,
