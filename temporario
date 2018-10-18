@@ -1,0 +1,6 @@
+KEY_NAME=''
+KEY_VALUE=''
+SERVICE_NAMESPACE='ngmonitornotify'
+TOPIC='opmon'
+
+python .\service-notify.py -H "NGPROXY_US" -S "NGProxyUS_Filas_Status_Erro" -A "127.0.0.1" -C "CRITICAL" -T "!!!TESTE!!!-NGPROXY_US/NGProxyUS_Filas_Status_Erro is CRITICAL" -D "10-10-2018 21:38:31"
